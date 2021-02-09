@@ -13,13 +13,10 @@ class InstaBot:
             .send_keys(pw)
         self.driver.find_element_by_xpath("//button[@type='submit']")\
             .click()
-        sleep(3)
-        self.driver.find_element_by_xpath("//button[@type='button']")\
-            .click()
-        sleep(3)
+        sleep(6)
         self.driver.find_element_by_xpath("//button[contains(text(),'Şimdi Değil')='button']")\
             .click()
-        sleep(3)
+        sleep(4)
 
     def get_unfollowers(self):
         self.driver.find_element_by_xpath("//a[contains(@href, '/{}')]".format(self.username))\
@@ -38,7 +35,7 @@ class InstaBot:
 
     def get_names(self):
         sleep(2)
-        scroll_box = self.driver.find_element_by_xpath("/html/body/div[5]/div/div/div[2]")
+        scroll_box = self.driver.find_element_by_xpath("/html/body/div[4]/div/div/div[2]")
         last_ht, ht = 0, 1
         while last_ht != ht:
             last_ht = ht
@@ -50,12 +47,12 @@ class InstaBot:
         links = scroll_box.find_elements_by_tag_name('a')
         names = [name.text for name in links if name.text != '']
         sleep(3)
-        self.driver.find_element_by_xpath('/html/body/div[5]/div/div/div[1]/div/div[2]/button/div')\
+        self.driver.find_element_by_xpath('/html/body/div[4]/div/div/div[1]/div/div[2]/button')\
             .click()
         return names
 
-username = input('Kullanıcı Adınız:')
-password = input('Parolanız: ')     
+username = 'bburakyilmz'
+password = 'saksosakso55'
    
 my_bot = InstaBot(username,password)
 my_bot.get_unfollowers()
